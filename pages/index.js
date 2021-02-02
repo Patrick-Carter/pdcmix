@@ -1,65 +1,137 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import React, { useState } from "react";
+import ReactPlayer from "react-player";
+import Head from "next/head";
+import useSound from "use-sound";
+
+import Button from "../components/shared/Button";
+import styles from "../styles/FrontPage.module.css";
+
+import PageTitle from "../components/frontpage/PageTitle";
+import Testimony from "../components/frontpage/Testimony";
+
+const testimonys = {
+  motley: {
+    title: "Motley",
+    image: "/frontpage/testimony/motley.jpg",
+    body: '"Patrick takes my music to the next level."',
+    song: "https://soundcloud.com/motley-000/basic-prod-by-seismic",
+  },
+  bkrisho: {
+    title: "Bkrisho",
+    image: "/frontpage/testimony/bkrisho.jpg",
+    body: '"I thought I didnt need mixing...then I met Patrick"',
+    song: "https://soundcloud.com/patrickdcarter/call-me-mix",
+  },
+  kayeandre: {
+    title: "Kayeandre",
+    image: "/frontpage/testimony/kayeandre.jpg",
+    body:
+      '"There are levels to this and Patrick will take you to the next level."',
+    song: "https://soundcloud.com/kayeandre/soom",
+  },
+  josiah: {
+    title: "Jo$iah",
+    image: "/frontpage/testimony/josiah.jpg",
+    body:
+      '"There are levels to this and Patrick will take you to the next level."',
+    song: "https://soundcloud.com/siahbnobody/in-da-night",
+  },
+  mcflurry: {
+    title: "Mcflurry",
+    image: "/frontpage/testimony/mcflurry.jpg",
+    body:
+      '"There are levels to this and Patrick will take you to the next level."',
+    song: "https://soundcloud.com/mcflurryrap/can-we-collab",
+  },
+  euphoa: {
+    title: "Euphoa",
+    image: "/frontpage/testimony/euphoa.jpg",
+    body:
+      '"There are levels to this and Patrick will take you to the next level."',
+    song: "https://soundcloud.com/user-549009690/jupiter",
+  },
+  yunglo: {
+    title: "Yung Lo",
+    image: "/frontpage/testimony/yunglo.jpg",
+    body:
+      '"There are levels to this and Patrick will take you to the next level."',
+    song: "https://soundcloud.com/patrickdcarter/1985-pdcmix",
+  },
+};
 
 export default function Home() {
+  const [basic, { stop, isPlaying }] = useSound("/music/Basic_MP3.mp3", {
+    volume: 0.5,
+  });
+
+  const [testimony, setTestimony] = useState(testimonys.motley);
+
+  const handleChangeTestimony = (event) => {
+    event.preventDefault();
+
+    switch (testimony.title) {
+      case "Motley":
+        setTestimony(testimonys.bkrisho);
+        break;
+      case "Bkrisho":
+        setTestimony(testimonys.kayeandre);
+        break;
+      case "Kayeandre":
+        setTestimony(testimonys.josiah);
+        break;
+      case "Jo$iah":
+        setTestimony(testimonys.mcflurry);
+        break;
+      case "Mcflurry":
+        setTestimony(testimonys.euphoa);
+        break;
+      case "Euphoa":
+        setTestimony(testimonys.yunglo);
+        break;
+      case "Yung Lo":
+        setTestimony(testimonys.motley);
+        break;
+      default:
+        break;
+    }
+  };
+
+  const handleContactMe = (event) => {
+    event.preventDefault();
+
+    console.log("nice");
+  };
+
   return (
-    <div className={styles.container}>
+    <div className={styles.frontpageContainer}>
       <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Incredible. Mixes</title>
       </Head>
-
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+      <Button text="Artist Hub" color="transparent" />
+      <div className={styles.content}>
+        <div className={styles.musicVideoPlayer}>
+          <ReactPlayer
+            url={testimony.song}
+            playing={true}
+            width={320}
+            height={180}
+          />
         </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
+        <div className={styles.middleText}>
+          <PageTitle />
+          <Button text="Contact Me" color="#45d9fd" onClick={handleContactMe} />
+        </div>
+      </div>
+      <div className={styles.testimony}>
+        <Testimony
+          title={testimony.title}
+          image={testimony.image}
+          body={testimony.body}
+          onClick={handleChangeTestimony}
+        />
+      </div>
     </div>
-  )
+  );
 }
