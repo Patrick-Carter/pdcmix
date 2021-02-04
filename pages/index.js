@@ -4,6 +4,7 @@ import ReactPlayer from "react-player";
 import Head from "next/head";
 
 import Button from "../components/shared/Button";
+import Card from "../components/shared/Card";
 import styles from "../styles/FrontPage.module.css";
 
 import PageTitle from "../components/frontpage/PageTitle";
@@ -120,9 +121,12 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Incredible. Mixes</title>
       </Head>
-      <Button text="Artist Hub" color="transparent" fontSize=".6rem"/>
+      <Button text="Artist Hub" color="transparent" fontSize=".6rem" />
       <div className={styles.content}>
-        <animated.div style={playerAnimation} className={styles.musicVideoPlayer}>
+        <animated.div
+          style={playerAnimation}
+          className={styles.musicVideoPlayer}
+        >
           <ReactPlayer
             url={testimony.song}
             playing={autoPlay}
@@ -135,15 +139,17 @@ export default function Home() {
           <Button text="Contact Me" color="#45d9fd" onClick={handleContactMe} />
         </div>
       </div>
-      <div className={styles.testimony}>
-        <Testimony
-          title={testimony.title}
-          image={testimony.image}
-          body={testimony.body}
-          transition={transition}
-          onClick={handleChangeTestimony}
-        />
-      </div>
+      <animated.div style={playerAnimation} className={styles.testimony}>
+        <Card>
+          <Testimony
+            title={testimony.title}
+            image={testimony.image}
+            body={testimony.body}
+            disableButton={transition}
+            onClick={handleChangeTestimony}
+          />
+        </Card>
+      </animated.div>
       <div className={styles.aboutMeTitle}>
         <PageTitle textOne="About" textTwo="Me" />
       </div>

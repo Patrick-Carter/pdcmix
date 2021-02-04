@@ -1,6 +1,11 @@
 import React from "react";
+//import { useSpring, animated } from "react-spring";
 
 const PageTitle = ({textOne, textTwo}) => {
+
+   // const enterLeft = useSpring();
+   // const enterRight = useSpring();
+
     return (
         <div className="title"> 
             <h1 className="text">

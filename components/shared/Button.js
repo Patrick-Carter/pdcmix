@@ -1,6 +1,6 @@
 import React from "react";
 
-const Button = ({ text, onClick, color, textColor, disabled, fontSize }) => {
+const Button = ({ text, onClick, color, textColor, disabled, fontSize, marginTop }) => {
   return (
     <div>
       <button className="mainButton" onClick={onClick} disabled={disabled}>
@@ -17,6 +17,7 @@ const Button = ({ text, onClick, color, textColor, disabled, fontSize }) => {
             padding: 0.5rem;
             font-family: "Lato", sans-serif;
             text-transform: uppercase;
+            margin-top: ${marginTop || 0};
             transition: all 200ms ease;
             cursor: pointer;
           }

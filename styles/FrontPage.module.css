@@ -1,14 +1,14 @@
 .frontpageContainer {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 }
 
 .content {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   margin: 5rem;
   
@@ -22,6 +22,10 @@
 }
 
 .musicVideoPlayer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
   margin-bottom: 5rem;
 }
 
