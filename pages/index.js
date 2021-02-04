@@ -1,7 +1,7 @@
 import React, { useState } from "react";
+import { useSpring, animated } from "react-spring";
 import ReactPlayer from "react-player";
 import Head from "next/head";
-import useSound from "use-sound";
 
 import Button from "../components/shared/Button";
 import styles from "../styles/FrontPage.module.css";
@@ -60,40 +60,51 @@ const testimonys = {
 };
 
 export default function Home() {
-  const [basic, { stop, isPlaying }] = useSound("/music/Basic_MP3.mp3", {
-    volume: 0.5,
-  });
-
   const [testimony, setTestimony] = useState(testimonys.motley);
+  const [transition, setTransition] = useState(false);
+  const [autoPlay, setAutoPlay] = useState(false);
+
+  const playerAnimation = useSpring({
+    from: { opacity: 0 },
+    opacity: 1,
+    config: { duration: 800 },
+    reverse: transition,
+  });
 
   const handleChangeTestimony = (event) => {
     event.preventDefault();
+    setTransition(true);
+    setAutoPlay(true);
 
-    switch (testimony.title) {
-      case "Motley":
-        setTestimony(testimonys.bkrisho);
-        break;
-      case "Bkrisho":
-        setTestimony(testimonys.kayeandre);
-        break;
-      case "Kayeandre":
-        setTestimony(testimonys.josiah);
-        break;
-      case "Jo$iah":
-        setTestimony(testimonys.mcflurry);
-        break;
-      case "Mcflurry":
-        setTestimony(testimonys.euphoa);
-        break;
-      case "Euphoa":
-        setTestimony(testimonys.yunglo);
-        break;
-      case "Yung Lo":
-        setTestimony(testimonys.motley);
-        break;
-      default:
-        break;
-    }
+    setTimeout(() => {
+      setTransition(false);
+
+      switch (testimony.title) {
+        case "Motley":
+          setTestimony(testimonys.bkrisho);
+          break;
+        case "Bkrisho":
+          setTestimony(testimonys.kayeandre);
+          break;
+        case "Kayeandre":
+          setTestimony(testimonys.josiah);
+          break;
+        case "Jo$iah":
+          setTestimony(testimonys.mcflurry);
+          break;
+        case "Mcflurry":
+          setTestimony(testimonys.euphoa);
+          break;
+        case "Euphoa":
+          setTestimony(testimonys.yunglo);
+          break;
+        case "Yung Lo":
+          setTestimony(testimonys.motley);
+          break;
+        default:
+          break;
+      }
+    }, 805);
   };
 
   const handleContactMe = (event) => {
@@ -109,18 +120,18 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Incredible. Mixes</title>
       </Head>
-      <Button text="Artist Hub" color="transparent" />
+      <Button text="Artist Hub" color="transparent" fontSize=".6rem"/>
       <div className={styles.content}>
-        <div className={styles.musicVideoPlayer}>
+        <animated.div style={playerAnimation} className={styles.musicVideoPlayer}>
           <ReactPlayer
             url={testimony.song}
-            playing={true}
+            playing={autoPlay}
             width={320}
             height={180}
           />
-        </div>
+        </animated.div>
         <div className={styles.middleText}>
-          <PageTitle />
+          <PageTitle textOne="Incredible." textTwo="Mixes." />
           <Button text="Contact Me" color="#45d9fd" onClick={handleContactMe} />
         </div>
       </div>
@@ -129,8 +140,12 @@ export default function Home() {
           title={testimony.title}
           image={testimony.image}
           body={testimony.body}
+          transition={transition}
           onClick={handleChangeTestimony}
         />
+      </div>
+      <div className={styles.aboutMeTitle}>
+        <PageTitle textOne="About" textTwo="Me" />
       </div>
     </div>
   );

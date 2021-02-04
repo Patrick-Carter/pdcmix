@@ -1,14 +1,14 @@
 import React from "react";
 
-const PageTitle = () => {
+const PageTitle = ({textOne, textTwo}) => {
     return (
         <div className="title"> 
             <h1 className="text">
                 <span className="incredible">
-                    Incredible.
+                    {textOne}
                 </span>
                 <span className="mixes">
-                    Mixes.
+                    {textTwo}
                 </span>
             </h1>
             <style jsx>{`
@@ -31,17 +31,6 @@ const PageTitle = () => {
             span {
                 margin: .25rem;
             }
-
-            
-
-            @keyframes fadein {
-                from {
-                  opacity: 0;
-                }
-                to {
-                  opacity: 1;
-                }
-              }
                      
             
             `}

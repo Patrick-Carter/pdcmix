@@ -23,16 +23,11 @@
 
 .musicVideoPlayer {
   margin-bottom: 5rem;
-  animation: fadein 2s ease-in;
-  transition: opacity 1.5s;
 }
 
-@keyframes fadein {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+.aboutMeTitle {
+  margin-top: 5rem;
 }
+
+
 

@@ -1,16 +1,16 @@
 import React from "react";
 
-const Button = ({ text, onClick, color, textColor }) => {
+const Button = ({ text, onClick, color, textColor, disabled, fontSize }) => {
   return (
     <div>
-      <button className="mainButton" onClick={onClick}>
+      <button className="mainButton" onClick={onClick} disabled={disabled}>
         <p>{text}</p>
       </button>
       <style jsx>
         {`
           .mainButton {
             width: 10rem;
-            font-size: 1rem;
+            font-size: ${fontSize || "1rem"};
             border-radius: 8px;
             border: 1px solid ${color};
             background-color: transparent;
