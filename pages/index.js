@@ -10,18 +10,25 @@ import styles from "../styles/FrontPage.module.css";
 import PageTitle from "../components/frontpage/PageTitle";
 import Testimony from "../components/frontpage/Testimony";
 
+const VERSION = {
+  before: "before",
+  after: "after",
+};
+
 const testimonys = {
   motley: {
     title: "Motley",
     image: "/frontpage/testimony/motley.jpg",
     body: '"Patrick takes my music to the next level."',
     song: "https://soundcloud.com/motley-000/basic-prod-by-seismic",
+    before: "",
   },
   bkrisho: {
     title: "Bkrisho",
     image: "/frontpage/testimony/bkrisho.jpg",
     body: '"I thought I didnt need mixing...then I met Patrick"',
     song: "https://soundcloud.com/patrickdcarter/call-me-mix",
+    before: "https://soundcloud.com/patrickdcarter/callme-before",
   },
   kayeandre: {
     title: "Kayeandre",
@@ -29,13 +36,15 @@ const testimonys = {
     body:
       '"There are levels to this and Patrick will take you to the next level."',
     song: "https://soundcloud.com/kayeandre/soom",
+    before: "",
   },
   josiah: {
     title: "Jo$iah",
     image: "/frontpage/testimony/josiah.jpg",
     body:
       '"There are levels to this and Patrick will take you to the next level."',
-    song: "https://soundcloud.com/siahbnobody/in-da-night",
+    song: "https://soundcloud.com/patrickdcarter/momma-after-joiah",
+    before: "https://soundcloud.com/patrickdcarter/momma-before-joiah",
   },
   mcflurry: {
     title: "Mcflurry",
@@ -43,6 +52,7 @@ const testimonys = {
     body:
       '"There are levels to this and Patrick will take you to the next level."',
     song: "https://soundcloud.com/mcflurryrap/can-we-collab",
+    before: "https://soundcloud.com/patrickdcarter/can-we-collab-before",
   },
   euphoa: {
     title: "Euphoa",
@@ -50,6 +60,7 @@ const testimonys = {
     body:
       '"There are levels to this and Patrick will take you to the next level."',
     song: "https://soundcloud.com/user-549009690/jupiter",
+    before: "",
   },
   yunglo: {
     title: "Yung Lo",
@@ -57,6 +68,7 @@ const testimonys = {
     body:
       '"There are levels to this and Patrick will take you to the next level."',
     song: "https://soundcloud.com/patrickdcarter/1985-pdcmix",
+    before: "",
   },
 };
 
@@ -64,6 +76,7 @@ export default function Home() {
   const [testimony, setTestimony] = useState(testimonys.motley);
   const [transition, setTransition] = useState(false);
   const [autoPlay, setAutoPlay] = useState(false);
+  const [songVersion, setSongVersion] = useState(VERSION.after);
 
   const playerAnimation = useSpring({
     from: { opacity: 0 },
@@ -83,29 +96,44 @@ export default function Home() {
       switch (testimony.title) {
         case "Motley":
           setTestimony(testimonys.bkrisho);
+          setSongVersion(VERSION.after)
           break;
         case "Bkrisho":
           setTestimony(testimonys.kayeandre);
+          setSongVersion(VERSION.after)
           break;
         case "Kayeandre":
           setTestimony(testimonys.josiah);
+          setSongVersion(VERSION.after)
           break;
         case "Jo$iah":
           setTestimony(testimonys.mcflurry);
+          setSongVersion(VERSION.after)
           break;
         case "Mcflurry":
           setTestimony(testimonys.euphoa);
+          setSongVersion(VERSION.after)
           break;
         case "Euphoa":
           setTestimony(testimonys.yunglo);
+          setSongVersion(VERSION.after)
           break;
         case "Yung Lo":
           setTestimony(testimonys.motley);
+          setSongVersion(VERSION.after)
           break;
         default:
           break;
       }
     }, 805);
+  };
+
+  const handleSongVersion = (event) => {
+    event.preventDefault();
+
+    songVersion === VERSION.after
+      ? setSongVersion(VERSION.before)
+      : setSongVersion(VERSION.after);
   };
 
   const handleContactMe = (event) => {
@@ -128,7 +156,9 @@ export default function Home() {
           className={styles.musicVideoPlayer}
         >
           <ReactPlayer
-            url={testimony.song}
+            url={
+              songVersion === VERSION.after ? testimony.song : testimony.before
+            }
             playing={autoPlay}
             width={320}
             height={180}
@@ -146,7 +176,10 @@ export default function Home() {
             image={testimony.image}
             body={testimony.body}
             disableButton={transition}
-            onClick={handleChangeTestimony}
+            songVersion={songVersion}
+            showBeforeButton={testimony.before}
+            changeTestimony={handleChangeTestimony}
+            changeSongVersion={handleSongVersion}
           />
         </Card>
       </animated.div>
