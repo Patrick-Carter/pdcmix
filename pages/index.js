@@ -1,14 +1,12 @@
 import React, { useState } from "react";
-import { useSpring, animated } from "react-spring";
-import ReactPlayer from "react-player";
 import Head from "next/head";
 
-import Button from "../components/shared/Button";
-import Card from "../components/shared/Card";
-import styles from "../styles/FrontPage.module.css";
-
-import PageTitle from "../components/frontpage/PageTitle";
-import Testimony from "../components/frontpage/Testimony";
+import ArtistHubFeatures from "../components/frontpage/artisthub-features/ArtisthubFeatures";
+import ExplainArtistHub from "../components/frontpage/explain-artisthub/ExplainArtistHub";
+import NavBar from "../components/shared/nav-bar/NavBar";
+import Hero from "../components/frontpage/hero/Hero";
+import Examples from "../components/frontpage/examples/Examples";
+import styles from "../styles/FrontPage.module.scss";
 
 const VERSION = {
   before: "before",
@@ -73,119 +71,44 @@ const testimonys = {
 };
 
 export default function Home() {
-  const [testimony, setTestimony] = useState(testimonys.motley);
-  const [transition, setTransition] = useState(false);
-  const [autoPlay, setAutoPlay] = useState(false);
-  const [songVersion, setSongVersion] = useState(VERSION.after);
-
-  const playerAnimation = useSpring({
-    from: { opacity: 0 },
-    opacity: 1,
-    config: { duration: 800 },
-    reverse: transition,
-  });
-
-  const handleChangeTestimony = (event) => {
-    event.preventDefault();
-    setTransition(true);
-    setAutoPlay(true);
-
-    setTimeout(() => {
-      setTransition(false);
-
-      switch (testimony.title) {
-        case "Motley":
-          setTestimony(testimonys.bkrisho);
-          setSongVersion(VERSION.after)
-          break;
-        case "Bkrisho":
-          setTestimony(testimonys.kayeandre);
-          setSongVersion(VERSION.after)
-          break;
-        case "Kayeandre":
-          setTestimony(testimonys.josiah);
-          setSongVersion(VERSION.after)
-          break;
-        case "Jo$iah":
-          setTestimony(testimonys.mcflurry);
-          setSongVersion(VERSION.after)
-          break;
-        case "Mcflurry":
-          setTestimony(testimonys.euphoa);
-          setSongVersion(VERSION.after)
-          break;
-        case "Euphoa":
-          setTestimony(testimonys.yunglo);
-          setSongVersion(VERSION.after)
-          break;
-        case "Yung Lo":
-          setTestimony(testimonys.motley);
-          setSongVersion(VERSION.after)
-          break;
-        default:
-          break;
-      }
-    }, 805);
-  };
-
-  const handleSongVersion = (event) => {
-    event.preventDefault();
-
-    songVersion === VERSION.after
-      ? setSongVersion(VERSION.before)
-      : setSongVersion(VERSION.after);
-  };
-
-  const handleContactMe = (event) => {
-    event.preventDefault();
-
-    console.log("nice");
-  };
-
   return (
     <div className={styles.frontpageContainer}>
       <Head>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Incredible. Mixes</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>PDCMIX</title>
       </Head>
-      <Button text="Artist Hub" color="transparent" fontSize=".6rem" />
-      <div className={styles.content}>
-        <animated.div
-          style={playerAnimation}
-          className={styles.musicVideoPlayer}
-        >
-          <ReactPlayer
-            url={
-              songVersion === VERSION.after ? testimony.song : testimony.before
-            }
-            playing={autoPlay}
-            width={320}
-            height={180}
-          />
-        </animated.div>
-        <div className={styles.middleText}>
-          <PageTitle textOne="Incredible." textTwo="Mixes." />
-          <Button text="Contact Me" color="#45d9fd" onClick={handleContactMe} />
+      <NavBar />
+      <div className={styles.splashPage}>
+        <Hero />
+        <Examples />
+      </div>
+      <section className={styles.sectionTwo}>
+        <ExplainArtistHub />
+        <ArtistHubFeatures />
+        <h2 className={styles.tagLine}>
+          No one does online mixing and mastering like this
+        </h2>
+      </section>
+      <section className={styles.sectionThree}>
+        <div className={styles.contactForm}>
+          <h1 className={styles.headline}>Contact Me</h1>
+          <form>
+            <p className={styles.label}>NAME</p>
+            <input className={styles.field} />
+            <p className={styles.label}>EMAIL</p>
+            <input className={styles.field} />
+            <p className={styles.label}>MESSAGE</p>
+            <input className={styles.messageField} />
+          </form>
         </div>
-      </div>
-      <animated.div style={playerAnimation} className={styles.testimony}>
-        <Card>
-          <Testimony
-            title={testimony.title}
-            image={testimony.image}
-            body={testimony.body}
-            disableButton={transition}
-            songVersion={songVersion}
-            showBeforeButton={testimony.before}
-            changeTestimony={handleChangeTestimony}
-            changeSongVersion={handleSongVersion}
-          />
-        </Card>
-      </animated.div>
-      <div className={styles.aboutMeTitle}>
-        <PageTitle textOne="About" textTwo="Me" />
-      </div>
+        <div className={styles.contactDetails}>
+          <p>Email</p>
+          <p>pcarter@pdcmix.com</p>
+          <p>Phone</p>
+          <p>469-713-7016</p>
+        </div>
+      </section>
     </div>
   );
 }
