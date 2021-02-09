@@ -1,0 +1,40 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway&display=swap");
+
+.artistHubFeatures {
+  
+  padding: 5em 0;
+  background-color: #252a34;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.feature {
+  font-family: "Raleway", sans-serif;
+  color: white;
+  margin: 3em 0;
+  text-align: center;
+  flex-basis: 50%;
+}
+
+@media only screen and (min-width: 1061px) {
+  .artistHubFeatures {
+    padding: 4rem;
+  }
+  .feature {
+    font-size: 1.2rem;
+  }
+}
+
+@media only screen and (min-width: 1550px) {
+  .artistHubFeatures {
+    padding: 5.3rem;
+  }
+}
+
+@media only screen and (min-width: 1800px) {
+  .artistHubFeatures {
+    padding: 8rem;
+  }
+}

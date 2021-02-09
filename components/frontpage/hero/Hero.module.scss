@@ -1,0 +1,15 @@
+.hero {
+    padding: 4rem;
+}
+
+@media only screen and (min-width: 1550px) {
+    .hero {
+        padding: 5.3rem;
+    }
+  }
+
+  @media only screen and (min-width: 1800px) {
+    .hero {
+        padding: 8rem;
+    }
+  }

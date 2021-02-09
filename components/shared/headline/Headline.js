@@ -2,10 +2,10 @@ import React from "react";
 
 import styles from "./Headline.module.scss";
 
-const Headline = ({ headline, body }) => {
+const Headline = ({ headline, body, underline }) => {
   return (
     <>
-      <h1 className={styles.healine}>{headline}</h1>
+      <h1 className={styles.headline}>{headline}<span className={styles.underline}>{underline}</span></h1>
       <p className={styles.details}>{body}</p>
     </>
   );

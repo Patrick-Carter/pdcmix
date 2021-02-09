@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+
 import Head from "next/head";
 
+import ActionButton from "../components/shared/action-button/ActionButton";
 import ArtistHubFeatures from "../components/frontpage/artisthub-features/ArtisthubFeatures";
 import ExplainArtistHub from "../components/frontpage/explain-artisthub/ExplainArtistHub";
 import NavBar from "../components/shared/nav-bar/NavBar";
@@ -78,35 +80,53 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>PDCMIX</title>
       </Head>
+      <div className={styles.topMargin}></div>
       <NavBar />
       <div className={styles.splashPage}>
         <Hero />
         <Examples />
+        <img
+          src="/frontpage/images/Arrow.svg"
+          alt="arrow pointing to examples"
+          className={styles.arrow}
+        />
+        <img
+          src="/frontpage/images/EarBuds.svg"
+          alt="ear buds flowing across screen"
+          className={styles.earpods}
+        />
       </div>
       <section className={styles.sectionTwo}>
         <ExplainArtistHub />
         <ArtistHubFeatures />
-        <h2 className={styles.tagLine}>
-          No one does online mixing and mastering like this
-        </h2>
       </section>
+      <h2 className={styles.tagLine}>
+        No one does online mixing and mastering like this.
+      </h2>
       <section className={styles.sectionThree}>
         <div className={styles.contactForm}>
-          <h1 className={styles.headline}>Contact Me</h1>
-          <form>
-            <p className={styles.label}>NAME</p>
-            <input className={styles.field} />
-            <p className={styles.label}>EMAIL</p>
-            <input className={styles.field} />
-            <p className={styles.label}>MESSAGE</p>
-            <input className={styles.messageField} />
+          <h1 className={styles.contactMeLabel}>Contact Me</h1>
+          <form className={styles.contactForm}>
+            <label for="name" className={styles.label}>
+              Name
+            </label>
+            <input type="text" name="name" className={styles.field} />
+            <label for="email" className={styles.label}>
+              Email
+            </label>
+            <input type="email" name="email" className={styles.field} />
+            <label for="message" className={styles.label}>
+              Message
+            </label>
+            <textarea name="message" className={styles.messageField} />
+            <ActionButton type="submit" text="Contact" />
           </form>
         </div>
         <div className={styles.contactDetails}>
-          <p>Email</p>
-          <p>pcarter@pdcmix.com</p>
-          <p>Phone</p>
-          <p>469-713-7016</p>
+          <p className={styles.contactDetailsItems}>Email</p>
+          <p className={styles.contactDetailsItems}>pcarter@pdcmix.com</p>
+          <p className={styles.contactDetailsItems}>Phone</p>
+          <p className={styles.contactDetailsItems}>469-713-7016</p>
         </div>
       </section>
     </div>

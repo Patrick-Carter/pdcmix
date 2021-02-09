@@ -1,0 +1,83 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@300;600&display=swap");
+
+.navContainer {
+  position: relative;
+  top: 0;
+  background-color: #3ee5e0;
+  z-index: 10;
+  position: fixed;
+  width: 100%;
+  margin-bottom: 4em;
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    height: 4em;
+  }
+}
+
+.logo {
+  margin: auto 0;
+  margin-left: 2rem;
+  font-family: "Raleway", sans-serif;
+  font-weight: 600;
+  color: #125452;
+  font-size: 1.5em;
+}
+
+.navLinks {
+  display: flex;
+
+  list-style-type: none;
+  margin-right: 1rem;
+}
+
+.link {
+  padding: 1em;
+  margin-top: 0.3em;
+  font-family: "Raleway", sans-serif;
+  font-weight: 300;
+  color: black;
+  font-size: 1em;
+}
+
+@media only screen and (min-width: 1061px) {
+  .navContainer {
+    width: 50%;
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      height: 4em;
+    }
+  }
+
+  .logo {
+    margin-left: 4rem;
+  }
+
+  .navLinks {
+    margin-right: 4rem;
+  }
+}
+
+@media only screen and (min-width: 1550px) {
+  .logo {
+    margin-left: 5.3rem;
+  }
+
+  .navLinks {
+    margin-right: 5.3rem;
+  }
+}
+
+
+@media only screen and (min-width: 1800px) {
+  .logo {
+    margin-left: 8rem;
+  }
+
+  .navLinks {
+    margin-right: 8rem;
+  }
+}
