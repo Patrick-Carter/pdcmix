@@ -11,7 +11,7 @@ const ExplainArtistHub = ({}) => {
         headline="Easy online collaboration"
         body="Collaboration is simple with the Artist Hub. Upload your project, request revisions, backup your files, even add other artists to help out. All in one secure location."
       />
-      <ActionButton text="Learn More" />
+      <ActionButton text="Learn More" marginTop="4rem"/>
       <div className={styles.angle}/>
     </div>
   );

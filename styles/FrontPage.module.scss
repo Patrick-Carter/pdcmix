@@ -21,6 +21,14 @@
   background-color: #252a34;
 }
 
+.contactFormContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #252a34;
+}
+
 .contactForm {
   display: flex;
   flex-direction: column;
@@ -29,9 +37,21 @@
   background-color: #252a34;
 }
 
-.field {
+.field,
+.messageField {
   height: 1.2em;
-  width: 15em;
+  width: 100%;
+  padding: 1rem;
+  font-family: "Raleway", sans-serif;
+  background-color: rgb(49, 55, 66);
+  border: none;
+}
+
+.field:focus,
+.messageField:focus {
+  background-color: rgb(66, 72, 83);
+  outline: none;
+  border-bottom: 1px solid #f08a5d;
 }
 
 .contactMeLabel {
@@ -55,10 +75,29 @@
   margin-top: 2em;
 }
 
+.field {
+  height: 1.2em;
+  width: 100%;
+  padding: 1rem;
+  font-family: "Raleway", sans-serif;
+  background-color: rgb(49, 55, 66);
+  border: none;
+  color: white;
+}
+
 .messageField {
   height: 8em;
-  width: 15em;
+  font-family: "Raleway", sans-serif;
   margin-bottom: 3em;
+  width: 100%;
+  color: white;
+}
+
+.field:focus,
+.messageField:focus {
+  background-color: rgb(66, 72, 83);
+  outline: none;
+  border-bottom: 1px solid #f08a5d;
 }
 
 .contactDetails {
@@ -73,19 +112,23 @@
   padding-bottom: 4em;
 }
 
+
+.contactDetailsItemsLabel {
+  text-transform: uppercase;
+  margin-bottom: .2em;
+}
+
 .contactDetailsItems {
-  margin-bottom: 1em;
+  margin-bottom: 2em;
 }
 
 @media only screen and (min-width: 580px) {
   .field {
-    height: 2em;
-    width: 25em;
+    width: 30rem;
   }
 
   .messageField {
-    width: 25em;
-    height: 10em;
+    width: 30rem;
   }
 }
 
@@ -132,26 +175,41 @@
     grid-template-areas: "contactForm contactDetails";
   }
 
+  .contactFormContainer {
+    display: unset;
+    padding: 4rem;
+  }
+
   .contactForm {
-    padding-bottom: 5rem;
+    display: unset;
+  }
+
+  .field {
+    width: 100%;
+  }
+
+  .messageField {
+    width: 100%;
   }
 
   .contactMeLabel {
+    text-align: left;
     font-size: 4em;
   }
 
   .label {
     font-size: 1.2em;
   }
+}
 
-  .field {
-    height: 3em;
-    width: 30em;
+@media only screen and (min-width: 1550px) {
+  .contactFormContainer {
+    padding: 5.3rem;
   }
+}
 
-  .messageField {
-    width: 30em;
-    height: 15em;
+@media only screen and (min-width: 1800px) {
+  .contactFormContainer {
+    padding: 8rem;
   }
-
 }

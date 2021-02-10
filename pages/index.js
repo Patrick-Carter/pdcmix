@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Head from "next/head";
 
 import ActionButton from "../components/shared/action-button/ActionButton";
+import Avatar from "../components/shared/avatar/Avatar";
 import ArtistHubFeatures from "../components/frontpage/artisthub-features/ArtisthubFeatures";
 import ExplainArtistHub from "../components/frontpage/explain-artisthub/ExplainArtistHub";
 import NavBar from "../components/shared/nav-bar/NavBar";
@@ -76,7 +77,7 @@ export default function Home() {
   return (
     <div className={styles.frontpageContainer}>
       <Head>
-        <meta charset="utf-8" />
+        <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>PDCMIX</title>
       </Head>
@@ -104,7 +105,7 @@ export default function Home() {
         No one does online mixing and mastering like this.
       </h2>
       <section className={styles.sectionThree}>
-        <div className={styles.contactForm}>
+        <div className={styles.contactFormContainer}>
           <h1 className={styles.contactMeLabel}>Contact Me</h1>
           <form className={styles.contactForm}>
             <label for="name" className={styles.label}>
@@ -123,10 +124,13 @@ export default function Home() {
           </form>
         </div>
         <div className={styles.contactDetails}>
-          <p className={styles.contactDetailsItems}>Email</p>
-          <p className={styles.contactDetailsItems}>pcarter@pdcmix.com</p>
-          <p className={styles.contactDetailsItems}>Phone</p>
-          <p className={styles.contactDetailsItems}>469-713-7016</p>
+          <div className={styles.contactDetailsBorder}>
+            <p className={styles.contactDetailsItemsLabel}>Email</p>
+            <p className={styles.contactDetailsItems}>pcarter@pdcmix.com</p>
+            <p className={styles.contactDetailsItemsLabel}>Phone</p>
+            <p className={styles.contactDetailsItems}>469-713-7016</p>
+            <Avatar image="/personal-pictures/personal-avater.jpg" />
+          </div>
         </div>
       </section>
     </div>

@@ -23,28 +23,19 @@ const Examples = ({}) => {
 
   const xlScreen = useMediaQuery({ query: "(min-device-width: 1800px" });
 
-  console.log(minScreen, smScreen, mdScreen, lgScreen, xlScreen);
-
   useEffect(() => {
-    console.log("In useEffect");
-
-    if (minScreen) {
-      setDimentions({ width: 280, height: 180 });
-    }
-    if (smScreen) {
-      setDimentions({ width: 500, height: 210 });
-    }
-    if (mdScreen) {
-      setDimentions({ width: 400, height: 235 });
-    }
-    if (md2Screen) {
-      setDimentions({ width: 500, height: 250 });
-    }
-    if (lgScreen) {
-      setDimentions({ width: 550, height: 280 });
-    }
     if (xlScreen) {
       setDimentions({ width: 630, height: 300 });
+    } else if (lgScreen) {
+      setDimentions({ width: 550, height: 280 });
+    } else if (md2Screen) {
+      setDimentions({ width: 500, height: 250 });
+    } else if (mdScreen) {
+      setDimentions({ width: 400, height: 235 });
+    } else if (smScreen) {
+      setDimentions({ width: 500, height: 210 });
+    } else if (minScreen) {
+      setDimentions({ width: 280, height: 180 });
     }
   }, [minScreen, smScreen, mdScreen, md2Screen, lgScreen, lgScreen]);
 
@@ -55,10 +46,11 @@ const Examples = ({}) => {
           width={dimentions.width}
           height={dimentions.height}
           url="https://soundcloud.com/motley-000/basic-prod-by-seismic"
+          playing={false}
         />
       </div>
       <Card>
-        <Avatar image="/frontpage/testimony/motley.jpg" />
+        <Avatar card={true} image="/frontpage/testimony/motley.jpg" />
         <h6 className={styles.artist}>Motley</h6>
         <p className={styles.quote}>
           "Pat's mixing is fast but he still works with me to get the exact
