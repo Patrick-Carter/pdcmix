@@ -4,7 +4,7 @@ import { useMediaQuery } from "react-responsive";
 import Avatar from "../../shared/avatar/Avatar";
 import NormalButton from "../../shared/normal-button/NormalButton";
 import ActionButton from "../../shared/action-button/ActionButton";
-import ReactPlayer from "react-player";
+import ReactPlayer from "react-player/soundcloud";
 import Card from "../../shared/card/Card";
 import styles from "./Examples.module.scss";
 
