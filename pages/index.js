@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import classNames from "classnames";
 
 import Head from "next/head";
 
@@ -123,13 +124,13 @@ export default function Home() {
             <ActionButton type="submit" text="Contact" />
           </form>
         </div>
-        <div className={styles.contactDetails}>
+        <div className={classNames({[styles.contactDetails]: true, [styles.test]: true})}>
           <div className={styles.contactDetailsBorder}>
             <p className={styles.contactDetailsItemsLabel}>Email</p>
             <p className={styles.contactDetailsItems}>pcarter@pdcmix.com</p>
             <p className={styles.contactDetailsItemsLabel}>Phone</p>
             <p className={styles.contactDetailsItems}>469-713-7016</p>
-            <Avatar image="/personal-pictures/personal-avater.jpg" />
+            <Avatar image="/personal-pictures/personal-avatar.jpg" />
           </div>
         </div>
       </section>

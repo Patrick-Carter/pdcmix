@@ -12,6 +12,8 @@
   min-height: 25em;
   max-height: 41em;
   margin-bottom: 5rem;
+  animation: card-in 500ms ease-out forwards;
+  transition: transform;
 }
 
 @media only screen and (min-width: 1061px) {
@@ -20,6 +22,18 @@
     left: 20%;
     width: 60%;
     margin-bottom: unset;
+  }
+}
+
+@keyframes card-in {
+  0% {
+    transform: translateX(100%);
+  }
+  75% {
+    transform: translateX(-5%);
+  }
+  100% {
+    transform: translateX(0);
   }
 }
 

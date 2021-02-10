@@ -8,6 +8,7 @@
   font-size: 3em;
   margin-bottom: 2.5rem;
   word-spacing: 3px;
+  animation: headline-load 500ms ease-out;
 }
 
 .underline {
@@ -20,6 +21,8 @@
   font-family: "Libre Franklin", sans-serif;
   font-size: 1.5em;
   word-spacing: 3px;
+  opacity: 0%;
+  animation: details-load 700ms 300ms forwards ease-in;
 }
 
 @media only screen and (min-width: 1061px) {
@@ -35,4 +38,24 @@
   }
 }
 
+@keyframes headline-load {
+  0% {
+    transform: translateX(-100%);
+  }
+  75% {
+    transform: translateX(5%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
 
+@keyframes details-load {
+  0% {
+    opacity: 0%;
+  }
+  
+  100% {
+    opacity: 100%;
+  }
+}

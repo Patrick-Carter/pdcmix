@@ -8,7 +8,7 @@
   position: fixed;
   width: 100%;
   margin-bottom: 4em;
-
+  animation: navbar-load 300ms;
   header {
     display: flex;
     justify-content: space-between;
@@ -71,7 +71,6 @@
   }
 }
 
-
 @media only screen and (min-width: 1800px) {
   .logo {
     margin-left: 8rem;
@@ -79,5 +78,14 @@
 
   .navLinks {
     margin-right: 8rem;
+  }
+}
+
+@keyframes navbar-load {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
   }
 }

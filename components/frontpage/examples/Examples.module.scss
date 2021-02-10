@@ -22,6 +22,8 @@
   margin-bottom: 7em;
   margin-left: auto;
   margin-right: auto;
+  opacity: 0%;
+  animation: mediaPlayer-in 300ms 700ms forwards ease-in;
 }
 
 .artist {
@@ -69,5 +71,15 @@
   .examples {
     margin-top: -15.5rem;
     padding: 8rem;
+  }
+}
+
+
+@keyframes mediaPlayer-in {
+  0% {
+    opacity: 0%;
+  }
+  100% {
+    opacity: 100%;
   }
 }

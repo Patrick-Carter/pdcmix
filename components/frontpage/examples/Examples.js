@@ -10,6 +10,7 @@ import styles from "./Examples.module.scss";
 
 const Examples = ({}) => {
   const [dimentions, setDimentions] = useState({ width: 280, height: 180 });
+  const [loadAudio, setLoadAudio] = useState(false);
 
   const minScreen = useMediaQuery({ query: "(min-device-width: 200px" });
 
@@ -43,10 +44,11 @@ const Examples = ({}) => {
     <div className={styles.examples}>
       <div className={styles.mediaPlayer}>
         <ReactPlayer
+          light
           width={dimentions.width}
           height={dimentions.height}
           url="https://soundcloud.com/motley-000/basic-prod-by-seismic"
-          playing={false}
+          playing={true}
         />
       </div>
       <Card>
